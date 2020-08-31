@@ -31,6 +31,9 @@ run_analysis <- function() {
 	data_avg <- data_melt %>% 
 	    	group_by(subject, activity, variable) %>%
 	    	summarize(average = mean(value))
+
+	# save data in the current folder
+	write.table(data_avg, "data_avg.txt", row.names=F)
     	
     	return(data_avg)
 }
@@ -46,19 +49,19 @@ read_data <- function() {
 	###
 
 	# load feature names, activity names
-	feature_names <- fread('features.txt')
-	activity_names <- fread('activity_labels.txt')
+	feature_names <- fread('./UCI HAR Dataset/features.txt')
+	activity_names <- fread('./UCI HAR Dataset/activity_labels.txt')
 
 	# load dataset
 	# dataset for "test" group
-	subject_test <- fread('./test/subject_test.txt')
-	x_test <- fread('./test/X_test.txt')
-	y_test <- fread('./test/y_test.txt')
+	subject_test <- fread('./UCI HAR Dataset/test/subject_test.txt')
+	x_test <- fread('./UCI HAR Dataset/test/X_test.txt')
+	y_test <- fread('./UCI HAR Dataset/test/y_test.txt')
 
 	# dataset for the "train" group
-	subject_train <- fread('./train/subject_train.txt')
-	x_train <- fread('./train/X_train.txt')
-	y_train <- fread('./train/y_train.txt')
+	subject_train <- fread('./UCI HAR Dataset/train/subject_train.txt')
+	x_train <- fread('./UCI HAR Dataset/train/X_train.txt')
+	y_train <- fread('./UCI HAR Dataset/train/y_train.txt')
 
 	# rename all the x_test, x_train columns to feature_names
 	names(x_test) <- feature_names$V2
@@ -93,3 +96,5 @@ read_data <- function() {
 	return(alldata)
 }
 
+# run analysis and save data
+run_analysis()
