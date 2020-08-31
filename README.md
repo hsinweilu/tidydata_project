@@ -13,14 +13,13 @@ activity done by each subject.
 
 You need to have following packages: `tidyverse` and `data.table`. To install these packages, type `install.packages('tidyverse')` and `install.packages('data.table')` in R. 
 
-To run the code, download the `run_analysis.R` file and place it in the `UCI HAR Dataset` folder. Start R in the same folder and type following:
+To run the code, download the `run_analysis.R` file and place it in the parent folder of the `UCI HAR Dataset` folder. Start R in the same folder and type following:
 
 ```R
 source('run_analysis.R')
-results <- run_analysis()
 ```
+The output file, `data_avg.txt` is saved in the current folder. 
 
-The `results` will be the tidy dataset that meets the criteria for the project.
 The dataset has four columns: 
 
 1. subject: subject number
